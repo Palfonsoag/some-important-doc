@@ -1,0 +1,35 @@
+//erease a container
+docker rm -fv <container-name>
+
+//list containers 
+
+docker ps
+
+//list all containers
+
+docker ps -a
+
+//create a container
+
+tags like --name or -p are not mandatory, we are free to use them or not
+if we do not want to use an specific image version, we just have to type the image name without ':' and it will create the container with the latest version of the image.
+
+ docker run -d --name <container-name> -p <port-to-expose> <image-name>:<image-version>
+
+
+//create an image
+
+-t tag is to set a name for the image, if we type a string next to ':' we will name the version of the image.
+
+docker build -t <image-name>:<image-version> .
+
+
+//list all images
+
+docker images
+
+
+//list some images
+
+
+docker images | grep <some-string>
