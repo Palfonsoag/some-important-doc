@@ -1,0 +1,29 @@
+FROM debian:stretch-slim
+
+
+RUN apt-get update && \
+    apt-get install apache2 -y && \
+    apt-get update && apt-get install -y gnupg2 && \
+    apt-get install apt-transport-https ca-certificates curl software-properties-common -y && \
+    curl -fsSL https://packages.sury.org/php/apt.gpg | apt-key add - && \
+    add-apt-repository "deb https://packages.sury.org/php/ $(lsb_release -cs) main" && \
+    apt-get update  && \
+    apt-get install php7.2-common php7.2-cli -y && \
+    apt-get install libapache2-mod-php7.2 -y 
+
+RUN   a2enmod php7.2  && \
+    echo "<?php phpinfo(); ?>" > /var/www/html/hola.php
+
+RUN a2enmod ssl && /etc/init.d/apache2 restart    
+
+COPY default-ssl /etc/apache2/sites-available/
+
+COPY docker.crt /docker.crt
+
+COPY docker.key /docker.key
+
+RUN a2ensite default-ssl && /etc/init.d/apache2 restart
+
+EXPOSE 443
+
+CMD /usr/sbin/apache2ctl -D FOREGROUND

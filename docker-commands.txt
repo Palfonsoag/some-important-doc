@@ -23,6 +23,12 @@ if we do not want to use an specific image version, we just have to type the ima
 
 docker build -t <image-name>:<image-version> .
 
+//create an image with other Dockerfile
+
+-t tag is to set a name for the image, if we type a string next to ':' we will name the version of the image. -f tag is to specify the name of the dockerfile
+
+docker build -t <image-name>:<image-version> -f <dockerfile-name> .
+
 
 //list all images
 
