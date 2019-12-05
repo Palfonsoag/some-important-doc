@@ -14,7 +14,9 @@ docker ps -a
 tags like --name or -p are not mandatory, we are free to use them or not
 if we do not want to use an specific image version, we just have to type the image name without ':' and it will create the container with the latest version of the image.
 
- docker run -d --name <container-name> -p <port-to-expose> <image-name>:<image-version>
+-p is use to bind a port or map the port, -d to run the container in the background
+
+ docker run -d --name <container-name> -p <my-port-to-map:container-port-to-map> <image-name>:<image-version>
 
 
 //create an image
@@ -39,3 +41,16 @@ docker images
 
 
 docker images | grep <some-string>
+
+
+//access to the container terminal
+
+
+docker exec -ti <container-name> bash
+
+
+//access to the container terminal as a root user
+
+docker exec -u root -ti <container-name> bash
+
+
