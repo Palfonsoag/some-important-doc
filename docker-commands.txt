@@ -1,4 +1,4 @@
-//erease a container
+//erase a container
 docker rm -fv <container-name>
 
 //list containers 
@@ -53,4 +53,53 @@ docker exec -ti <container-name> bash
 
 docker exec -u root -ti <container-name> bash
 
+//log the container
+
+
+docker logs -f <container-name>
+
+
+//copy files to a container
+
+docker cp <file> <container-name>:<container-directory>
+
+//copy file from the container to my host
+
+docker cp <container-name>:<file-route> <host-route>
+
+
+we can re write the cmd if we add a command after the image name 
+
+docker run -d -m "500mb" --name mongo2 mongo echo "hola mundo"
+
+
+docker inspect <container-name>
+
+//list networks
+
+docker network ls 
+
+docker network inspect <red-name>
+
+default network -> bridge
+
+//create a docker network
+
+
+docker network create <red-name>
+//connect a container to another network
+
+docker network connect <red-name> <container-name>
+
+docker network connect red-test cont3
+
+to disconnect the container we just have to replace connect with disconnect
+
+docker network disconnect <red-name> <container-name>
+
+to delete  a network we use
+
+docker network rm <network-name>
+
+we can create a container on the host network
 

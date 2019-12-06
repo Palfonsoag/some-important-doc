@@ -1,0 +1,12 @@
+-m flag let you set the ram limit of the container.
+docker run -d -m "500mb" --name mongo2 mongo
+
+--cpuset-cpus  flag let you set the number o cpu limit of the container
+
+
+docker run -d -m "500mb" --cpuset-cpus 0-1 --name mongo3 mongo
+
+--rm will destroy automatically the container when it stops or we leave the session.
+
+
+--network <network-name> to set the network that will be connected the container

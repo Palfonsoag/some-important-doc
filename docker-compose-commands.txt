@@ -1,0 +1,9 @@
+create the multiple container app 
+
+docker-compose up -d 
+
+docker-compose down
+
+create an image with docker compose
+
+docker-compose build
